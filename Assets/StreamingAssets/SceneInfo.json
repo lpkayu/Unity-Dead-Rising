@@ -1,0 +1,5 @@
+[
+{"id":1,"imgPath":"SceneImg/Scene1","name":"森林","describe":"简单","sceneName":"GameScene1"},
+{"id":2,"imgPath":"SceneImg/Scene2","name":"墓地","describe":"普通","sceneName":"GameScene2"},
+{"id":3,"imgPath":"SceneImg/Scene3","name":"墓地","describe":"困难","sceneName":"GameScene3"}
+]
