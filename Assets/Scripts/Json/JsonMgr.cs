@@ -26,7 +26,6 @@ public class JsonMgr
     //存储Json数据 序列化
     public void SaveData(object data, string fileName, JsonType type = JsonType.LitJson)
     {
-        Debug.Log(Application.persistentDataPath);
         //确定存储路径
         string path = Application.persistentDataPath + "/" + fileName + ".json";
         //序列化 得到Json字符串

@@ -21,8 +21,10 @@ public class GameDataManager //读取和保存本地数据
     
     public List<RoleInfo> roleInfo;
     public List<SceneInfo> sceneInfo;
+    public List<ZombieInfo> zombieInfo;
+    public List<TowerInfo> towerInfo;
     
-    public RoleInfo nowSelectCharacter;//用于在过场景时保存选择角色的信息
+    public RoleInfo nowSelectCharacterInfo;//用于在过场景时保存选择角色的信息
     
     private GameDataManager()
     {
@@ -31,6 +33,8 @@ public class GameDataManager //读取和保存本地数据
         
         roleInfo = JsonMgr.Instance.LoadData<List<RoleInfo>>("RoleInfo");
         sceneInfo = JsonMgr.Instance.LoadData<List<SceneInfo>>("SceneInfo");
+        zombieInfo = JsonMgr.Instance.LoadData<List<ZombieInfo>>("ZombieInfo");
+        towerInfo = JsonMgr.Instance.LoadData<List<TowerInfo>>("TowerInfo");
     }
 
     //音乐数据相关
@@ -39,6 +43,7 @@ public class GameDataManager //读取和保存本地数据
        JsonMgr.Instance.SaveData(musicData,"MusicData");
     }
 
+    //玩家数据相关
     public void SavePlayerData()
     {
         JsonMgr.Instance.SaveData(playerData,"PlayerData");

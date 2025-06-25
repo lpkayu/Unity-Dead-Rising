@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager
 {
@@ -37,7 +38,16 @@ public class UIManager
             return uiDic[panelName];
         }
         //动态加载面板
-        GameObject panelObj = GameObject.Instantiate(Resources.Load<GameObject>("UI/" + panelName));
+        GameObject panelObj;
+        if (SceneManager.GetActiveScene().name == "BeginScene")
+        {
+           panelObj = GameObject.Instantiate(Resources.Load<GameObject>("UI/BeginScene/" + panelName));
+        }
+        else
+        {
+            panelObj = GameObject.Instantiate(Resources.Load<GameObject>("UI/GameScene/" + panelName));
+        }
+        
         panelObj.name = panelName;
         panelObj.transform.SetParent(canvasTransform,false);
            
@@ -61,13 +71,13 @@ public class UIManager
         }
     }
 
-    /*public BasePanel GetPanel(string panelName)
+    public BasePanel GetPanel(string panelName)
     {
         if (uiDic.ContainsKey(panelName))
         {
             return uiDic[panelName];
         }
         return null;
-    }*/
+    }
     
 }

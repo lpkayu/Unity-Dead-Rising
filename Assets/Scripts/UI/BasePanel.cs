@@ -28,7 +28,7 @@ public abstract class BasePanel : MonoBehaviour
 
     protected abstract void Init();
 
-    private void Update()
+    protected virtual void Update()
     {
         if (fadeIn && _canvasGroup.alpha != 1)
         {

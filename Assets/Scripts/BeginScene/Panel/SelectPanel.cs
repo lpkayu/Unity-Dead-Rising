@@ -46,7 +46,7 @@ public class SelectPanel : BasePanel
         
         startBtn.onClick.AddListener(() =>
         {
-            GameDataManager.Instance.nowSelectCharacter = nowRoleData;
+            GameDataManager.Instance.nowSelectCharacterInfo = nowRoleData;
             UIManager.Instance.HidePanel("SelectPanel");
             UIManager.Instance.ShowPanel("SelectScenePanel");
         });
@@ -99,7 +99,8 @@ public class SelectPanel : BasePanel
         nowRoleData = GameDataManager.Instance.roleInfo[nowIndex];
         characterObj = Instantiate(Resources.Load<GameObject>(nowRoleData.resourcePath), characterPos.position,characterPos.rotation);
         roleName.text = nowRoleData.roleName;
-        
+        if (characterObj.GetComponent<PlayerObj>() != null)
+            Destroy(characterObj.GetComponent<PlayerObj>());
         UpdateUnlockCharacter();
     }
 

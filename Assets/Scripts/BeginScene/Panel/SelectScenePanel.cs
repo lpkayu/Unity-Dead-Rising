@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectScenePanel : BasePanel
@@ -18,11 +19,16 @@ public class SelectScenePanel : BasePanel
     
     protected override void Init()
     {
-        ChangeImage();
+        ChangeSceneInfo();
         
         startBtn.onClick.AddListener(() =>
         {
-            //进行场景跳转
+            UIManager.Instance.HidePanel("SelectScenePanel");
+            AsyncOperation ao=SceneManager.LoadSceneAsync(nowSceneData.sceneName);
+            ao.completed += (obj) =>
+            {
+                GameLevelManager.Instance.InitGameLevel(nowSceneData);
+            };
         });
         
         returnBtn.onClick.AddListener(() =>
@@ -32,13 +38,13 @@ public class SelectScenePanel : BasePanel
         });
         
         leftBtn.onClick.AddListener(() =>
-        {
+        { 
             --nowSceneIndex;
             if (nowSceneIndex < 0)
             {
                 nowSceneIndex = GameDataManager.Instance.sceneInfo.Count - 1;
             }
-            ChangeImage();
+            ChangeSceneInfo();
         });
         
         rightBtn.onClick.AddListener(() =>
@@ -48,12 +54,12 @@ public class SelectScenePanel : BasePanel
             {
                 nowSceneIndex = 0;
             }
-            ChangeImage();
+            ChangeSceneInfo();
         });
         
     }
 
-    public void ChangeImage()
+    public void ChangeSceneInfo()
     {
         if (sceneImage.sprite != null)
         {

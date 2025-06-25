@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerData //玩家数据
 {
    //拥有金币
-   public int money=500;
+   public int money=500;//初始金币
    //已解锁角色
    public List<int> unlockCharacter=new List<int>();
 }
