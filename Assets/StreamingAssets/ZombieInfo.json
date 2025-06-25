@@ -1,0 +1,17 @@
+[
+{"id":1,"res":"Zombie/Zombie1","animator":"Animator/Zombie/Zombie_aggresive1","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8}, 
+{"id":2,"res":"Zombie/Zombie2","animator":"Animator/Zombie/Zombie_crawl","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":3,"res":"Zombie/Zombie3","animator":"Animator/Zombie/Zombie_broken","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":4,"res":"Zombie/Zombie4","animator":"Animator/Zombie/Zombie_aggresive1","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":5,"res":"Zombie/Zombie5","animator":"Animator/Zombie/Zombie_crawl","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":6,"res":"Zombie/Zombie6","animator":"Animator/Zombie/Zombie_broken","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":7,"res":"Zombie/Zombie1","animator":"Animator/Zombie/Zombie_broken","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":8,"res":"Zombie/Zombie2","animator":"Animator/Zombie/Zombie_aggresive1","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":9,"res":"Zombie/Zombie3","animator":"Animator/Zombie/Zombie_crawl","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":10,"res":"Zombie/Zombie4","animator":"Animator/Zombie/Zombie_crawl","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":11,"res":"Zombie/Zombie5","animator":"Animator/Zombie/Zombie_broken","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":12,"res":"Zombie/Zombie6","animator":"Animator/Zombie/Zombie_aggresive1","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":13,"res":"Zombie/Zombie7","animator":"Animator/Zombie/Zombie_aggresive2","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":14,"res":"Zombie/Zombie8","animator":"Animator/Zombie/Zombie_aggresive1","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8},
+{"id":15,"res":"Zombie/Zombie9","animator":"Animator/Zombie/Zombie_aggresive2","atk":2,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkOffset":0.8}
+]
