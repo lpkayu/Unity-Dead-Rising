@@ -43,7 +43,6 @@ public class ZombieObj : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        Debug.Log("僵尸受伤");
         hp -= dmg;
         _animator.SetTrigger("Hurt");
         if (hp <= 0)
@@ -52,7 +51,7 @@ public class ZombieObj : MonoBehaviour
         }
         else
         {
-            MusicManager.Instance.PlaySound("Music/Wound");
+            MusicPoolManager.Instance.PlaySound("Music/ZombieHit");
         }
     }
 
@@ -61,14 +60,13 @@ public class ZombieObj : MonoBehaviour
         isDead = true;
         _animator.SetBool("isDead",true);
         _agent.isStopped = true;
-        
-        //播放死亡音效
-        MusicManager.Instance.PlaySound("Music/dead");
+        MusicPoolManager.Instance.PlaySound("Music/ZombieDead");
+        GameLevelManager.Instance.playerObj.AddMoney(50);
     }
 
     public void DeadEvent()
     {
-        GameLevelManager.Instance.AddCurrentZombieNum(-1);
+        GameLevelManager.Instance.RemoveZombieList(this);
         GameLevelManager.Instance.killZombieNum += 1;
         Destroy(this.gameObject);
 
@@ -90,8 +88,7 @@ public class ZombieObj : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position+this.transform.up+this.transform.forward,0.5f,
             1<<LayerMask.NameToLayer("SafetyArea"));
-       //todo:添加音效
-       MusicManager.Instance.PlaySound("Eat");
+        MusicPoolManager.Instance.PlaySound("Music/Eat");
         for (int i = 0; i < colliders.Length; i++)
         {
             if (SafetyAreaObj.Instance.gameObject == colliders[i].gameObject)

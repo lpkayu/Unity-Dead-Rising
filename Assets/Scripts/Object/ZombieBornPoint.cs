@@ -34,7 +34,7 @@ public class ZombieBornPoint : MonoBehaviour
       zombieObj.InitZombieInfo(info);
       
       --currentZombieNum;
-      GameLevelManager.Instance.AddCurrentZombieNum(1);
+      GameLevelManager.Instance.AddZombieList(zombieObj);
       
       if (currentZombieNum == 0)
       {

@@ -24,7 +24,7 @@ public class PlayerObj : MonoBehaviour
     public bool isFire;
     
     [SerializeField]private int atk;
-    private int money;
+    public int money;
     
     private GameUI gameUI;
 
@@ -121,8 +121,8 @@ public class PlayerObj : MonoBehaviour
 
     public void ShootEvent()
     {
-        RaycastHit[] hits = Physics.RaycastAll(new Ray(firePoint.position,firePoint.forward),1000);
-        MusicManager.Instance.PlaySound("Music/Gun");
+        RaycastHit[] hits = Physics.RaycastAll(new Ray(firePoint.position,this.transform.forward),1000);
+        MusicPoolManager.Instance.PlaySound("Music/Gun");
         for (int i = 0; i < hits.Length; i++)
         {
             ZombieObj zombie = hits[i].collider.gameObject.GetComponent<ZombieObj>();
@@ -138,7 +138,7 @@ public class PlayerObj : MonoBehaviour
     {
         Collider[] colliders= Physics.OverlapSphere(this.transform.position + this.transform.forward * detectionDistance.z+this.transform.up*detectionDistance.y, radius,
             1 << LayerMask.NameToLayer("Music/Zombie"));
-        MusicManager.Instance.PlaySound("Knife");
+        MusicPoolManager.Instance.PlaySound("Music/Knife");
         for (int i = 0; i < colliders.Length; i++)
         {
             ZombieObj zombie = colliders[i].gameObject.GetComponent<ZombieObj>();
@@ -167,9 +167,7 @@ public class PlayerObj : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        
         Vector3 detectionCenter = transform.position + transform.forward * detectionDistance.z+this.transform.up*detectionDistance.y;
-        
         Gizmos.DrawWireSphere(detectionCenter, radius);
     }
     

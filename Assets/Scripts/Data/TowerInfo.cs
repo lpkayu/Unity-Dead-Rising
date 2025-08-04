@@ -9,10 +9,9 @@ public class TowerInfo
     public int money;
     public int atk;
     public int atkRange;
-    public float offsetTime;
-    public int nextLev;
+    public float offsetTime;//炮台cd
+    public int nextLev; //炮台的下一个等级
     public string imgRes;
     public string res;
-    public int atkType;
     public string eff;
 }

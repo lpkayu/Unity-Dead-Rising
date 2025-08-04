@@ -25,25 +25,25 @@ public class SettingPanel : BasePanel
         
         musicToggle.onValueChanged.AddListener((isOpen) =>
         {
-            MusicManager.Instance.SetMusicOn(isOpen);
-
+            MusicPoolManager.Instance.SetMusicOn(isOpen);
             GameDataManager.Instance.musicData.isOpenMusic = isOpen;
         });
         
         soundToggle.onValueChanged.AddListener((isOpen) =>
         {
+            MusicPoolManager.Instance.SetSoundOn(isOpen);
             GameDataManager.Instance.musicData.isOpenSound = isOpen;
         });
         
         musicSlider.onValueChanged.AddListener((value) =>
         {
-            MusicManager.Instance.SetMusicValue(value);
-
+            MusicPoolManager.Instance.SetMusicValue(value);
             GameDataManager.Instance.musicData.musicValue = value;
         });
         
         soundSlider.onValueChanged.AddListener((value) =>
         {
+            MusicPoolManager.Instance.SetSoundValue(value);
             GameDataManager.Instance.musicData.soundValue = value;
         });
         

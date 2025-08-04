@@ -17,15 +17,18 @@ public class GameLevelManager
     }
 
     private Transform playerBornPos;
-    private PlayerObj playerObj;
+    public PlayerObj playerObj;
 
     private List<ZombieBornPoint> allZombieBornPoint=new List<ZombieBornPoint>();//用于记录所有出怪点
     private int allWaveNum=0;//所有出怪点的总波数
     private int currentAllWaveNum=0;//当前波数
-    public int currentZombieNum=0;//当前场景中所有怪物数量
+
+    private List<ZombieObj> zombieList=new List<ZombieObj>();//记录当前场景中所有怪物
+    
     private GameUI ui;
 
     public int killZombieNum=0;
+    
     private GameLevelManager()
     {
         
@@ -73,12 +76,32 @@ public class GameLevelManager
         currentAllWaveNum += num;
         ui.UpdateWaveNumber(currentAllWaveNum,allWaveNum);
     }
-    
-    //记录场景中怪物总数
-    public void AddCurrentZombieNum(int num)
+
+    //添加和移除场景中的僵尸数量
+    public void AddZombieList(ZombieObj zombieObj)
     {
-        currentZombieNum += num;
+        zombieList.Add(zombieObj);
     }
+    public void RemoveZombieList(ZombieObj zombieObj)
+    {
+        zombieList.Remove(zombieObj);
+    }
+
+    //为炮台查找符合条件的怪物目标
+    public ZombieObj FindTargetZombie(Vector3 towerPos,float range)
+    {
+        for (int i = 0; i < zombieList.Count; i++)
+        {
+            if (!zombieList[i].isDead && 
+                Vector3.Distance(towerPos, zombieList[i].transform.position) <=range)
+            {
+                return zombieList[i];
+            }
+        }
+
+        return null;
+    }
+    
     
     //检查游戏是否胜利
     public bool CheckGameOver()
@@ -91,7 +114,7 @@ public class GameLevelManager
             }
         }
 
-        if (currentZombieNum > 0)
+        if (zombieList.Count > 0)
             return false;
         
         return true;
@@ -101,9 +124,9 @@ public class GameLevelManager
     public void ClearGameLevelData()
     {
         allZombieBornPoint.Clear();
+        zombieList.Clear();
         playerObj = null;
-        allWaveNum = currentAllWaveNum = currentZombieNum = killZombieNum=0;
-        
+        allWaveNum = currentAllWaveNum= killZombieNum=0;
     }
     
 }

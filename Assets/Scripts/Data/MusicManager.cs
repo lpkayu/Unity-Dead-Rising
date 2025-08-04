@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour //用于设置音乐音效
+public class MusicManager : MonoBehaviour // 音乐音效管理系统
 {
     private static MusicManager instance;
     public static MusicManager Instance=>instance;
@@ -30,9 +30,7 @@ public class MusicManager : MonoBehaviour //用于设置音乐音效
     {
         audioSource.volume = value;
     }
-
     
-    //todo:修改整个音效系统，避免一直创建和销毁音效
     public void PlaySound(string soundName)//音效播放
     {
         AudioSource _audioSource= this.AddComponent<AudioSource>();
@@ -42,7 +40,5 @@ public class MusicManager : MonoBehaviour //用于设置音乐音效
         _audioSource.Play();
         Destroy(_audioSource,1);
     }
-    
-    
     
 }
