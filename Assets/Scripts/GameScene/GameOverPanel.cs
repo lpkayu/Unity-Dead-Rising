@@ -14,7 +14,7 @@ public class GameOverPanel : BasePanel
     private int money;//用于记录奖励
     protected override void Init()
     {
-        
+
         returnBtn.onClick.AddListener(() =>
         {
             GameLevelManager.Instance.ClearGameLevelData(); //清除关卡数据

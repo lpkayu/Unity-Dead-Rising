@@ -17,7 +17,7 @@ public class CameraMove : MonoBehaviour
 
     private void Update()
     {
-        if(lookAtTarget==null||GameLevelManager.Instance.CheckGameOver())
+        if(lookAtTarget==null)
             return;
         //摄像机偏移设置
         cameraPos = lookAtTarget.position + lookAtTarget.forward * offset.z;

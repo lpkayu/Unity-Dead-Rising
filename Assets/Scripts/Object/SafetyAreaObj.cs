@@ -40,12 +40,18 @@ public class SafetyAreaObj : MonoBehaviour
     {
         if(isDead)
             return;
-        Debug.Log("防御塔减血");
         currentHp -= hurt;
         if (currentHp <= 0)
         {
             currentHp = 0;
             isDead = true;
+            
+            // 禁用玩家输入
+            if (GameLevelManager.Instance.playerObj != null)
+            {
+                GameLevelManager.Instance.playerObj.DisablePlayerInput();
+            }
+            
             UIManager.Instance.ShowPanel("GameOverPanel");
             GameOverPanel panel = GameObject.Find("GameOverPanel").GetComponent<GameOverPanel>();
             panel.InitInfo(true);

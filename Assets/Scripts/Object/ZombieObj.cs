@@ -43,6 +43,8 @@ public class ZombieObj : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        if(isDead)
+            return;
         hp -= dmg;
         _animator.SetTrigger("Hurt");
         if (hp <= 0)
@@ -72,6 +74,11 @@ public class ZombieObj : MonoBehaviour
 
         if (GameLevelManager.Instance.CheckGameOver())
         {
+            if (GameLevelManager.Instance.playerObj != null)
+            {
+                GameLevelManager.Instance.playerObj.DisablePlayerInput();
+            }
+            
             UIManager.Instance.ShowPanel("GameOverPanel");
             GameOverPanel panel = GameObject.Find("GameOverPanel").GetComponent<GameOverPanel>();
             panel.InitInfo(false);
@@ -105,7 +112,7 @@ public class ZombieObj : MonoBehaviour
             return;
         _animator.SetBool("isRun", _agent.velocity != Vector3.zero);
         if( Vector3.Distance(this.transform.position, SafetyAreaObj.Instance.transform.position ) < 4 &&
-            Time.time - lastAtkTime >= zombieInfo.atkOffset)
+            Time.time - lastAtkTime >= zombieInfo.atkOffset && !SafetyAreaObj.Instance.isDead)
         {
             lastAtkTime= Time.time;
             _animator.SetTrigger("Attack");

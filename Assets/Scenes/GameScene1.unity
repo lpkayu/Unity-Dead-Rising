@@ -31493,7 +31493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106432, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 413356, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31582,7 +31582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieMaxWave: 2
   eachWaveZombieNum: 10
-  zombieID: 0100000005000000080000000c0000000f000000
+  zombieID: 0200000004000000090000000d0000000e000000
   createEachZombieTime: 2
   createEachWaveTime: 10
   firstWaveCreateTime: 10
@@ -70521,7 +70521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8d757f14413d44e9cde6c68ff4fdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 2.7, z: -2.2}
+  offset: {x: 0, y: 3.5, z: -4}
   lookAtOffset: 2
   moveSpeed: 15
   rotaSpeed: 30
@@ -82771,12 +82771,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468b4e7ddc4acb548b0b5abf55213905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieMaxWave: 1
-  eachWaveZombieNum: 1
+  zombieMaxWave: 2
+  eachWaveZombieNum: 10
   zombieID: 0100000005000000080000000c0000000f000000
   createEachZombieTime: 2
   createEachWaveTime: 10
-  firstWaveCreateTime: 2
+  firstWaveCreateTime: 10
   currentZombieNum: 0
 --- !u!1001 &1777124197
 PrefabInstance:
