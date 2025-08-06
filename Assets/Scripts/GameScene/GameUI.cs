@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,18 +17,42 @@ public class GameUI : BasePanel
     public Transform towerBtn;
     public List<TowerBtn> towerBtnObj;
     private CreateTowerPoint nowSelectTowerPoint;
+
+    private PlayerInputController _playerInputController;
     
-    //用于检测造塔是否输入
-    private bool checkInput;
+    //用于判断是否要进行造塔
+    private bool createInput;
     
     //血条缓动
     public Image hpImg;
     public Image hpEffectImg;
     public float speed;
-    
-    protected override void Init()
+
+    protected override void Awake()
     {
-        returnBtn.onClick.AddListener(() =>
+        base.Awake();
+        _playerInputController = new PlayerInputController();
+    }
+    
+     protected override void Start()
+     {
+         base.Start();
+         _playerInputController.UI.CreateTower.performed+=CreateTower;
+     }
+     
+    private void OnEnable()
+    {
+        _playerInputController.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInputController.UI.CreateTower.performed -= CreateTower;
+        _playerInputController.Disable();
+    }
+
+    protected override void Init()
+    { returnBtn.onClick.AddListener(() =>
         {
             UIManager.Instance.HidePanel("GameUI");
             SceneManager.LoadScene("Scenes/BeginScene");
@@ -34,6 +61,48 @@ public class GameUI : BasePanel
         towerBtn.gameObject.SetActive(false);
     }
     
+   
+
+    private void CreateTower(InputAction.CallbackContext obj)
+    {
+        if(!createInput)
+            return;
+        
+        
+        if (nowSelectTowerPoint.nowTowerInfo == null)
+        {
+            
+            if (obj.control is KeyControl control)
+            {
+                switch (control.keyCode)
+                {
+                    case Key.Digit1:
+                        nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[0]);
+                        break;
+                    case Key.Digit2:
+                        nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[1]);
+                        break;
+                    case Key.Digit3:
+                        nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[2]);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            if (obj.control is KeyControl control)
+            {
+                switch (control.keyCode)
+                {
+                    case Key.Space:
+                        nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.nowTowerInfo.nextLev);
+                        break;
+                }
+            }
+        }
+    }
+
+
     //血条缓动效果
     public void UpdateHp(int currentHp,int maxHp)
     {
@@ -58,12 +127,12 @@ public class GameUI : BasePanel
     
         if(nowSelectTowerPoint == null)
         {
-            checkInput = false;
+            createInput = false;
             towerBtn.gameObject.SetActive(false);
         }
         else
         {
-            checkInput = true;
+            createInput = true;
             towerBtn.gameObject.SetActive(true);
             //没造过塔
             if (nowSelectTowerPoint.nowTowerInfo== null)
@@ -84,38 +153,5 @@ public class GameUI : BasePanel
                 towerBtnObj[1].InitBtnInfo(nowSelectTowerPoint.nowTowerInfo.nextLev, "空格键");
             }
         }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        
-        if (!checkInput)
-            return;
-        
-        if( nowSelectTowerPoint.nowTowerInfo == null )
-        {
-            if( Input.GetKeyDown(KeyCode.Alpha1) )
-            {
-                nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[0]);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[1]);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.towerIds[2]);
-            }
-        }
-        //造过塔 就检测空格键 去建造
-        else
-        {
-            if( Input.GetKeyDown(KeyCode.Space) )
-            {
-                nowSelectTowerPoint.CreatTower(nowSelectTowerPoint.nowTowerInfo.nextLev);
-            }
-        }
-        
     }
 }

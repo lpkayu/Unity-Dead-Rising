@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3924622803025396590}
   - component: {fileID: 7926692083091665355}
   - component: {fileID: -3190182509105946580}
+  - component: {fileID: 1583907197692756277}
   m_Layer: 0
   m_Name: Tower_Gauss3
   m_TagString: Untagged
@@ -71,7 +72,27 @@ MonoBehaviour:
   firePoint: {fileID: 7862321052378366411}
   rotaSpeed: 10
   soundName: Music/Laser
-  effName: effect/Gauss
+--- !u!65 &1583907197692756277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124888710133107691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5354805, z: 1.5634613}
+  m_Center: {x: 0, y: 0.7209816, z: 0.0065231323}
 --- !u!1 &5625071095661109124
 GameObject:
   m_ObjectHideFlags: 0

@@ -4883,4 +4883,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64c416d3e3a8374eb2783394b540c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  effData: {fileID: 11400000, guid: 12e279e408a98cc4f918d56c91e003c8, type: 2}

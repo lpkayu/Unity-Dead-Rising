@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 6719569389678379542}
   - component: {fileID: 8438121001557834482}
   - component: {fileID: -1561737810194161286}
+  - component: {fileID: 8790034996891970457}
   m_Layer: 0
   m_Name: Tower_Laser3
   m_TagString: Untagged
@@ -202,6 +203,27 @@ MonoBehaviour:
   firePoint: {fileID: 865650688308904192}
   rotaSpeed: 10
   soundName: Music/Laser
+--- !u!65 &8790034996891970457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703018369740403299}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0016212, z: 1.5634613}
+  m_Center: {x: 0, y: 0.45405197, z: 0.0065231323}
 --- !u!1 &5809170276677136918
 GameObject:
   m_ObjectHideFlags: 0

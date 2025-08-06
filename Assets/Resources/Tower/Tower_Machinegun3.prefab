@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6788793370542281471}
   - component: {fileID: -93839625190568347}
+  - component: {fileID: 5429719282831432915}
   m_Layer: 0
   m_Name: Tower_Machinegun3
   m_TagString: Untagged
@@ -80,7 +81,27 @@ MonoBehaviour:
   firePoint: {fileID: 6524210598128116204}
   rotaSpeed: 10
   soundName: Music/Tower
-  effName: effect/Machinegun
+--- !u!65 &5429719282831432915
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2150742381159928116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.1882153, z: 1.056488}
+  m_Center: {x: 0, y: 0.547349, z: -0.023468018}
 --- !u!1 &4789463568350616886
 GameObject:
   m_ObjectHideFlags: 0

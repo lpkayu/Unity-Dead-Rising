@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class EffObject : MonoBehaviour
 {
-   public float speed;
+   public EffData effData;
 
    private void Update()
    {
-      this.transform.Translate(this.transform.forward*speed*Time.deltaTime,Space.World);
+      this.transform.Translate(this.transform.forward*effData.speed*Time.deltaTime,Space.World);
       
    }
 

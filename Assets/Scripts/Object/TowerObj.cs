@@ -19,7 +19,8 @@ public class TowerObj : MonoBehaviour
 
     private void Awake()
     {
-        InitTowerInfo(GameDataManager.Instance.towerInfo[0]);
+        InitTowerInfo(TowerData.Instance.towerInfos[0]);
+        
         attackTime = -_towerInfo.offsetTime;
     }
 
@@ -50,10 +51,7 @@ public class TowerObj : MonoBehaviour
             _targetZombieObj.TakeDamage(_towerInfo.atk);
             MusicPoolManager.Instance.PlaySound(soundName);
             GameObject eff = Instantiate(Resources.Load<GameObject>(_towerInfo.eff),firePoint.position,firePoint.rotation);
-            if (eff.name == "Mechinegun")
-            {
-                Destroy(eff,0.2f);
-            }
+            Destroy(eff,0.3f);
             attackTime = Time.time;
         }
     }

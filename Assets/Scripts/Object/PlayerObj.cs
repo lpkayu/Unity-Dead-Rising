@@ -46,10 +46,13 @@ public class PlayerObj : MonoBehaviour
 
     void Start()
     {
+        if(GameLevelManager.Instance.CheckGameOver())
+            return;
+        
         _playerInputController.Player.Roll.started += Roll;
         _playerInputController.Player.Fire.started += context =>isFire=true ;
-        _playerInputController.Player.Fire.canceled += context =>isFire=false ;
         _playerInputController.Player.Crouch.started += StartCrouch;
+        _playerInputController.Player.Fire.canceled += context =>isFire=false ;
         _playerInputController.Player.Crouch.canceled += EndCrouch;
         
         _animator.SetLayerWeight(1,currentWeight);
@@ -69,6 +72,7 @@ public class PlayerObj : MonoBehaviour
     private void OnDisable()
     {
         _playerInputController.Disable();
+       
     }
 
     public void InitPlayerInfo(int atk,int money)
@@ -81,6 +85,9 @@ public class PlayerObj : MonoBehaviour
     
     void Update()
     {
+        if(GameLevelManager.Instance.CheckGameOver())
+            return;
+        
         hSpeed =Mathf.Lerp(hSpeed,_playerInputController.Player.Move.ReadValue<Vector2>().x,smoothSpeed*Time.deltaTime) ;
         vSpeed =Mathf.Lerp(vSpeed,_playerInputController.Player.Move.ReadValue<Vector2>().y,smoothSpeed*Time.deltaTime);
 
@@ -126,6 +133,8 @@ public class PlayerObj : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             ZombieObj zombie = hits[i].collider.gameObject.GetComponent<ZombieObj>();
+            GameObject eff = Instantiate(Resources.Load<GameObject>("effect/attack"),hits[i].point,hits[i].transform.rotation);
+            Destroy(eff,0.3f);
             if (zombie != null)
             {
                 zombie.TakeDamage(atk);

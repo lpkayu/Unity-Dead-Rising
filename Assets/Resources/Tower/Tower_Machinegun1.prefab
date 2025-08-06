@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 996313509196389683}
   - component: {fileID: 8740143443932319810}
+  - component: {fileID: 1813409620800498481}
   m_Layer: 0
   m_Name: Tower_Machinegun1
   m_TagString: Untagged
@@ -49,7 +50,27 @@ MonoBehaviour:
   firePoint: {fileID: 7595889168297657299}
   rotaSpeed: 10
   soundName: Music/Tower
-  effName: effect/Machinegun
+--- !u!65 &1813409620800498481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930636042657039475}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.1882153, z: 1.056488}
+  m_Center: {x: 0, y: 0.547349, z: -0.023468018}
 --- !u!1 &3231637443987924257
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,10 +347,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8357815869012574121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -0.061, y: 0.246, z: 1.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5984004037866717873}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -180, z: 0}

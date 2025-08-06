@@ -1,5 +1,5 @@
 [
-{"id":1,"imgPath":"Image/Scene1","name":"森林","describe":"简单","sceneName":"GameScene1","money": 100,"safetyAreaHp": 100},
+{"id":1,"imgPath":"Image/Scene1","name":"森林","describe":"简单","sceneName":"GameScene1","money": 200,"safetyAreaHp": 100},
 {"id":2,"imgPath":"Image/Scene2","name":"墓地","describe":"普通","sceneName":"GameScene2","money": 200,"safetyAreaHp": 200},
 {"id":3,"imgPath":"Image/Scene3","name":"墓地","describe":"困难","sceneName":"GameScene3","money": 300,"safetyAreaHp": 300}
 ]

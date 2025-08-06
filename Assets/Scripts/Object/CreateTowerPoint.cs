@@ -10,6 +10,12 @@ public class CreateTowerPoint : MonoBehaviour
     public List<int> towerIds;
 
     private GameUI ui;
+
+    private void Awake()
+    {
+        nowTowerInfo = null;
+    }
+
     private void Start()
     {
         ui = GameObject.Find("GameUI").GetComponent<GameUI>();
@@ -17,8 +23,7 @@ public class CreateTowerPoint : MonoBehaviour
 
     public void CreatTower(int towerId)
     {
-        TowerInfo info = GameDataManager.Instance.towerInfo[towerId - 1];
-        
+        TowerInfo info = TowerData.Instance.towerInfos[towerId-1];
        
         if(GameLevelManager.Instance.playerObj.money<info.money)
             return;
@@ -45,7 +50,7 @@ public class CreateTowerPoint : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (nowTowerInfo != null && nowTowerInfo.nextLev == 0)
+        if (nowTowerInfo != null && nowTowerInfo.nextLev == 0) 
             return;
         ui.UpdateTowerBtnInfo(this);
     }

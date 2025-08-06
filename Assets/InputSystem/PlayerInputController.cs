@@ -154,6 +154,67 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""1a67c359-4a20-4f7b-bd1f-f98e33674e6c"",
+            ""actions"": [
+                {
+                    ""name"": ""CreateTower"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5ad1117-fcd3-49d5-a88f-cad3b9ed2cb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""86554ca6-cd89-4a29-b4b9-900c5f49902f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CreateTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f998d23c-78c5-4e51-9121-46150257fe90"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CreateTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aca53a12-dd9d-4a46-8215-085f9e9b88e4"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CreateTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6782158-fba4-4e10-b1b4-253dd9c23199"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CreateTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -225,6 +286,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_CreateTower = m_UI.FindAction("CreateTower", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -352,6 +416,52 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_CreateTower;
+    public struct UIActions
+    {
+        private @PlayerInputController m_Wrapper;
+        public UIActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CreateTower => m_Wrapper.m_UI_CreateTower;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @CreateTower.started += instance.OnCreateTower;
+            @CreateTower.performed += instance.OnCreateTower;
+            @CreateTower.canceled += instance.OnCreateTower;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @CreateTower.started -= instance.OnCreateTower;
+            @CreateTower.performed -= instance.OnCreateTower;
+            @CreateTower.canceled -= instance.OnCreateTower;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -403,5 +513,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         void OnRoll(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnCreateTower(InputAction.CallbackContext context);
     }
 }

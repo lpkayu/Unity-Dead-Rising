@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0bddaf3728dc540ba5c1981ecbbb6b, type: 3}
+  m_Name: RoleData
+  m_EditorClassIdentifier: 
+  roleInfos:
+  - id: 1
+    resourcePath: Character/Soldier1
+    atk: 3
+    roleName: Gunner
+    unlockAmount: 0
+    type: 2
+  - id: 2
+    resourcePath: Character/Soldier2
+    atk: 2
+    roleName: Knife Holder
+    unlockAmount: 0
+    type: 1
+  - id: 3
+    resourcePath: Character/Soldier3
+    atk: 5
+    roleName: Machine Gunner
+    unlockAmount: 5000
+    type: 2
+  - id: 4
+    resourcePath: Character/Soldier4
+    atk: 5
+    roleName: Machine Gunner
+    unlockAmount: 5000
+    type: 2
+  - id: 5
+    resourcePath: Character/Soldier5
+    atk: 4
+    roleName: Rifleman
+    unlockAmount: 2000
+    type: 2
+  - id: 6
+    resourcePath: Character/Soldier6
+    atk: 10
+    roleName: Rocket Gunner
+    unlockAmount: 10000
+    type: 2

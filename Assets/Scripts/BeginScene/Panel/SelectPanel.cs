@@ -56,7 +56,7 @@ public class SelectPanel : BasePanel
             --nowIndex;
             if (nowIndex < 0)
             {
-                nowIndex = GameDataManager.Instance.roleInfo.Count - 1;
+                nowIndex = RoleData.Instance.roleInfos.Count-1;
             }
             ChangeCharacter();
         });
@@ -64,7 +64,7 @@ public class SelectPanel : BasePanel
         rightBtn.onClick.AddListener(() =>
         {
             ++nowIndex;
-            if (nowIndex >GameDataManager.Instance.roleInfo.Count-1)
+            if (nowIndex > RoleData.Instance.roleInfos.Count-1)
             {
                 nowIndex = 0;
             }
@@ -96,7 +96,7 @@ public class SelectPanel : BasePanel
         {
             Destroy(characterObj);
         }
-        nowRoleData = GameDataManager.Instance.roleInfo[nowIndex];
+        nowRoleData = RoleData.Instance.roleInfos[nowIndex];
         characterObj = Instantiate(Resources.Load<GameObject>(nowRoleData.resourcePath), characterPos.position,characterPos.rotation);
         roleName.text = nowRoleData.roleName;
         if (characterObj.GetComponent<PlayerObj>() != null)

@@ -42,7 +42,7 @@ public class SelectScenePanel : BasePanel
             --nowSceneIndex;
             if (nowSceneIndex < 0)
             {
-                nowSceneIndex = GameDataManager.Instance.sceneInfo.Count - 1;
+                nowSceneIndex = SceneData.Instance.sceneDatas.Count-1;
             }
             ChangeSceneInfo();
         });
@@ -50,7 +50,7 @@ public class SelectScenePanel : BasePanel
         rightBtn.onClick.AddListener(() =>
         {
             ++nowSceneIndex;
-            if (nowSceneIndex > GameDataManager.Instance.sceneInfo.Count - 1)
+            if (nowSceneIndex > SceneData.Instance.sceneDatas.Count-1)
             {
                 nowSceneIndex = 0;
             }
@@ -65,7 +65,7 @@ public class SelectScenePanel : BasePanel
         {
             sceneImage.sprite = null;
         }
-        nowSceneData = GameDataManager.Instance.sceneInfo[nowSceneIndex];
+        nowSceneData = SceneData.Instance.sceneDatas[nowSceneIndex];
         sceneName.text = "Name：" + nowSceneData.name;
         sceneDescribe.text = "Describe：" + nowSceneData.describe;
 

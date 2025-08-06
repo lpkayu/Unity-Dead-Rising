@@ -1,8 +1,8 @@
 [
-{"id":1,"resourcePath":"Character/Soldier1","atk":3,"roleName":"Gunner","unlockAmount":0,"type":2,"hitEff":"eff/1"},
-{"id":2,"resourcePath":"Character/Soldier2","atk":2,"roleName":"Knife holder","unlockAmount":0,"type":1,"hitEff":"eff/1"},
-{"id":3,"resourcePath":"Character/Soldier3","atk":5,"roleName":"Machine gunner","unlockAmount":1000,"type":2,"hitEff":"eff/1"},
-{"id":4,"resourcePath":"Character/Soldier4","atk":5,"roleName":"Machine gunner","unlockAmount":1000,"type":2,"hitEff":"eff/1"},
-{"id":5,"resourcePath":"Character/Soldier5","atk":4,"roleName":"Rifleman","unlockAmount":500,"type":2,"hitEff":"eff/1"},
-{"id":6,"resourcePath":"Character/Soldier6","atk":10,"roleName":"Rocket gunner","unlockAmount":2000,"type":2,"hitEff":"eff/1"}
+{"id":1,"resourcePath":"Character/Soldier1","atk":3,"roleName":"Gunner","unlockAmount":0,"type":2},
+{"id":2,"resourcePath":"Character/Soldier2","atk":2,"roleName":"Knife holder","unlockAmount":0,"type":1},
+{"id":3,"resourcePath":"Character/Soldier3","atk":5,"roleName":"Machine gunner","unlockAmount":1000,"type":2},
+{"id":4,"resourcePath":"Character/Soldier4","atk":5,"roleName":"Machine gunner","unlockAmount":1000,"type":2},
+{"id":5,"resourcePath":"Character/Soldier5","atk":4,"roleName":"Rifleman","unlockAmount":500,"type":2},
+{"id":6,"resourcePath":"Character/Soldier6","atk":10,"roleName":"Rocket gunner","unlockAmount":2000,"type":2}
 ]
