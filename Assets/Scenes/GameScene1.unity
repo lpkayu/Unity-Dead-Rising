@@ -31497,7 +31497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 413356, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 221.27
+      value: 208.74
       objectReference: {fileID: 0}
     - target: {fileID: 413356, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31505,7 +31505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 413356, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 201.47
+      value: 212.23
       objectReference: {fileID: 0}
     - target: {fileID: 413356, guid: f0ae9903b00e5314c809306f337baea5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31585,7 +31585,7 @@ MonoBehaviour:
   zombieID: 0200000004000000090000000d0000000e000000
   createEachZombieTime: 2
   createEachWaveTime: 10
-  firstWaveCreateTime: 10
+  firstWaveCreateTime: 5
   currentZombieNum: 0
 --- !u!4 &640431088 stripped
 Transform:
@@ -82774,9 +82774,9 @@ MonoBehaviour:
   zombieMaxWave: 2
   eachWaveZombieNum: 10
   zombieID: 0100000005000000080000000c0000000f000000
-  createEachZombieTime: 2
+  createEachZombieTime: 3
   createEachWaveTime: 10
-  firstWaveCreateTime: 10
+  firstWaveCreateTime: 40
   currentZombieNum: 0
 --- !u!1001 &1777124197
 PrefabInstance:

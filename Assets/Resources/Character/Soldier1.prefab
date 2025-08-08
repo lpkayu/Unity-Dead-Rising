@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 10
   crouchSmoothSpeed: 10
-  roteSpeed: 1.5
+  roteSpeed: 2
   isFire: 0
   atk: 0
   money: 0

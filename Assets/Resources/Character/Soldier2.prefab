@@ -375,8 +375,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 10
   crouchSmoothSpeed: 10
-  roteSpeed: 1.5
+  roteSpeed: 2
   isFire: 0
+  atk: 0
+  money: 0
   firePoint: {fileID: 0}
   detectionDistance: {x: 0, y: 1.2, z: 1.1}
   radius: 0.9

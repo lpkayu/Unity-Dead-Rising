@@ -8,7 +8,7 @@ public class ZombieInfo
     public string res; //资源路径
     public string animator;
     public int atk;
-    public int moveSpeed;
+    public float moveSpeed;
     public int roundSpeed;
     public int hp;
     public float atkOffset;

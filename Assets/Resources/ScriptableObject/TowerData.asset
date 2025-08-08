@@ -16,7 +16,7 @@ MonoBehaviour:
   - id: 1
     name: "1\u7EA7\u7535\u78C1\u70AE"
     money: 200
-    atk: 5
+    atk: 3
     atkRange: 8
     offsetTime: 1
     nextLev: 2
@@ -26,7 +26,7 @@ MonoBehaviour:
   - id: 2
     name: "2\u7EA7\u7535\u78C1\u70AE"
     money: 300
-    atk: 10
+    atk: 5
     atkRange: 8
     offsetTime: 1
     nextLev: 3
@@ -36,7 +36,7 @@ MonoBehaviour:
   - id: 3
     name: "3\u7EA7\u7535\u78C1\u70AE"
     money: 400
-    atk: 20
+    atk: 9
     atkRange: 8
     offsetTime: 1
     nextLev: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     money: 200
     atk: 5
     atkRange: 8
-    offsetTime: 1
+    offsetTime: 1.5
     nextLev: 5
     imgRes: Image/Tower/Tower_Laser1
     res: Tower_Laser1
@@ -56,9 +56,9 @@ MonoBehaviour:
   - id: 5
     name: "2\u7EA7\u6FC0\u5149\u5854"
     money: 300
-    atk: 10
+    atk: 8
     atkRange: 8
-    offsetTime: 1
+    offsetTime: 1.5
     nextLev: 6
     imgRes: Image/Tower/Tower_Laser2
     res: Tower_Laser2
@@ -66,9 +66,9 @@ MonoBehaviour:
   - id: 6
     name: "3\u7EA7\u6FC0\u5149\u5854"
     money: 400
-    atk: 20
+    atk: 10
     atkRange: 8
-    offsetTime: 1
+    offsetTime: 1.5
     nextLev: 0
     imgRes: Image/Tower/Tower_Laser3
     res: Tower_Laser3
@@ -76,7 +76,7 @@ MonoBehaviour:
   - id: 7
     name: "1\u7EA7\u673A\u67AA\u5854"
     money: 200
-    atk: 3
+    atk: 2
     atkRange: 8
     offsetTime: 0.5
     nextLev: 8
@@ -86,7 +86,7 @@ MonoBehaviour:
   - id: 8
     name: "2\u7EA7\u673A\u67AA\u5854"
     money: 300
-    atk: 6
+    atk: 4
     atkRange: 8
     offsetTime: 0.5
     nextLev: 9
@@ -96,7 +96,7 @@ MonoBehaviour:
   - id: 9
     name: "3\u7EA7\u673A\u67AA\u5854"
     money: 400
-    atk: 9
+    atk: 6
     atkRange: 8
     offsetTime: 0.5
     nextLev: 0
