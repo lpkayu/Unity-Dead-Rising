@@ -11,5 +11,5 @@ public class RoleInfo //角色数据
    public int atk;
    public string roleName;
    public int unlockAmount;
-   public int type; //用于区分攻击方式
+   /*public int type; //用于区分攻击方式*/
 }

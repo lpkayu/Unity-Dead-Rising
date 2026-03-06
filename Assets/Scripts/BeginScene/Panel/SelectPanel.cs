@@ -82,10 +82,6 @@ public class SelectPanel : BasePanel
                 GameDataManager.Instance.SavePlayerData();
                 UpdateUnlockCharacter();
             }
-            else
-            {
-                UIManager.Instance.ShowPanel("TipsPanel");
-            }
         });
         
     }
@@ -97,7 +93,7 @@ public class SelectPanel : BasePanel
             Destroy(characterObj);
         }
         nowRoleData = RoleData.Instance.roleInfos[nowIndex];
-        characterObj = Instantiate(Resources.Load<GameObject>(nowRoleData.resourcePath), characterPos.position,characterPos.rotation);
+        characterObj = Instantiate(ResourceManager.Instance.Load<GameObject>(nowRoleData.resourcePath), characterPos.position,characterPos.rotation);
         roleName.text = nowRoleData.roleName;
         if (characterObj.GetComponent<PlayerObj>() != null)
             Destroy(characterObj.GetComponent<PlayerObj>());

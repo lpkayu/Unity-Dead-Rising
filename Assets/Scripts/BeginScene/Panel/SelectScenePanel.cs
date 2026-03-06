@@ -27,7 +27,7 @@ public class SelectScenePanel : BasePanel
             AsyncOperation ao=SceneManager.LoadSceneAsync(nowSceneData.sceneName);
             ao.completed += (obj) =>
             {
-                GameLevelManager.Instance.InitGameLevel(nowSceneData);
+                LevelManager.Instance.InitGameLevel(nowSceneData);
             };
         });
         
@@ -66,10 +66,9 @@ public class SelectScenePanel : BasePanel
             sceneImage.sprite = null;
         }
         nowSceneData = SceneData.Instance.sceneDatas[nowSceneIndex];
-        sceneName.text = "Name：" + nowSceneData.name;
-        sceneDescribe.text = "Describe：" + nowSceneData.describe;
-
-        sceneImage.sprite = Resources.Load<Sprite>(nowSceneData.imgPath);
+        sceneName.text = "地图：" + nowSceneData.name;
+        sceneDescribe.text = "简介：" + nowSceneData.describe;
+        sceneImage.sprite = ResourceManager.Instance.Load<Sprite>(nowSceneData.imgPath);
     }
     
 }

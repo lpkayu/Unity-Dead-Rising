@@ -1955,7 +1955,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 321.24, y: 32.66, z: 218.7982}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 937799886383673988}
@@ -2076,13 +2076,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 10
   crouchSmoothSpeed: 10
-  roteSpeed: 2
+  roteSpeed: 3
   isFire: 0
   atk: 0
   money: 0
   firePoint: {fileID: 6242992188555736011}
-  detectionDistance: {x: 0, y: 0, z: 0}
-  radius: 0
 --- !u!1 &4918921770030512876
 GameObject:
   m_ObjectHideFlags: 0

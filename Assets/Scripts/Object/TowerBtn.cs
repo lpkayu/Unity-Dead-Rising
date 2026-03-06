@@ -13,7 +13,7 @@ public class TowerBtn : MonoBehaviour
    public void InitBtnInfo(int id,string text)
    {
       TowerInfo info = TowerData.Instance.towerInfos[id-1];
-      towerImg.sprite = Resources.Load<Sprite>(info.imgRes);
+      towerImg.sprite = ResourceManager.Instance.Load<Sprite>(info.imgRes);
       moneyText.text = "¥"+info.money;
       buttonText.text = text;
    }

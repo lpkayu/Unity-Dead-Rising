@@ -47,9 +47,9 @@ public class SafetyAreaObj : MonoBehaviour
             isDead = true;
             
             // 禁用玩家输入
-            if (GameLevelManager.Instance.playerObj != null)
+            if (LevelManager.Instance.playerObj != null)
             {
-                GameLevelManager.Instance.playerObj.DisablePlayerInput();
+                LevelManager.Instance.playerObj.DisablePlayerInput();
             }
             
             UIManager.Instance.ShowPanel("GameOverPanel");

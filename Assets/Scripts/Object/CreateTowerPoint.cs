@@ -25,19 +25,23 @@ public class CreateTowerPoint : MonoBehaviour
     {
         TowerInfo info = TowerData.Instance.towerInfos[towerId-1];
        
-        if(GameLevelManager.Instance.playerObj.money<info.money)
+        if(LevelManager.Instance.playerObj.money<info.money)
             return;
 
-        GameLevelManager.Instance.playerObj.AddMoney(-info.money);
+        LevelManager.Instance.playerObj.AddMoney(-info.money);
         if (towerObj != null)
         {
             Destroy(towerObj);
             towerObj = null;
         }
-        towerObj = Instantiate(Resources.Load<GameObject>("Tower/"+info.res),this.transform.position,Quaternion.identity);
+        towerObj = Instantiate(ResourceManager.Instance.Load<GameObject>("Tower/"+info.res),this.transform.position,Quaternion.identity);
         towerObj.GetComponent<TowerObj>().InitTowerInfo(info);
 
         nowTowerInfo = info;
+        
+        // 触发任务事件
+        QuestEventHub.TriggerTowerBuilt(towerId);
+        
         if(nowTowerInfo.nextLev != 0)
         {
             ui.UpdateTowerBtnInfo(this);

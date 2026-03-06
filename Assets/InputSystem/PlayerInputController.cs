@@ -167,6 +167,15 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheckTask"",
+                    ""type"": ""Button"",
+                    ""id"": ""14be0e94-556e-46b7-98b8-2f22416f197e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -211,6 +220,17 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""CreateTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87b81137-0862-4a09-9eda-016707b43fff"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CheckTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -289,6 +309,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_CreateTower = m_UI.FindAction("CreateTower", throwIfNotFound: true);
+        m_UI_CheckTask = m_UI.FindAction("CheckTask", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -421,11 +442,13 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_CreateTower;
+    private readonly InputAction m_UI_CheckTask;
     public struct UIActions
     {
         private @PlayerInputController m_Wrapper;
         public UIActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @CreateTower => m_Wrapper.m_UI_CreateTower;
+        public InputAction @CheckTask => m_Wrapper.m_UI_CheckTask;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @CreateTower.started += instance.OnCreateTower;
             @CreateTower.performed += instance.OnCreateTower;
             @CreateTower.canceled += instance.OnCreateTower;
+            @CheckTask.started += instance.OnCheckTask;
+            @CheckTask.performed += instance.OnCheckTask;
+            @CheckTask.canceled += instance.OnCheckTask;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -445,6 +471,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @CreateTower.started -= instance.OnCreateTower;
             @CreateTower.performed -= instance.OnCreateTower;
             @CreateTower.canceled -= instance.OnCreateTower;
+            @CheckTask.started -= instance.OnCheckTask;
+            @CheckTask.performed -= instance.OnCheckTask;
+            @CheckTask.canceled -= instance.OnCheckTask;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -517,5 +546,6 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     public interface IUIActions
     {
         void OnCreateTower(InputAction.CallbackContext context);
+        void OnCheckTask(InputAction.CallbackContext context);
     }
 }

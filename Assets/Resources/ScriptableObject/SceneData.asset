@@ -16,7 +16,8 @@ MonoBehaviour:
   - id: 1
     imgPath: Image/Scene1
     name: "\u5893\u5730"
-    describe: "\u96BE\u5EA6\uFF1A\u7B80\u5355"
+    describe: "\u5728\u9634\u68EE\u7684\u5893\u5730\u4E2D\u62B5\u5FA1\u50F5\u5C38\u7684\u88AD\u51FB\u5427   
+      \u5173\u5361\u96BE\u5EA6\uFF1A\u7B80\u5355"
     sceneName: GameScene1
     money: 200
     safetyAreaHp: 100

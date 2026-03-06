@@ -30,14 +30,11 @@ public class PlayerObj : MonoBehaviour
 
     private LineRenderer line;
     private GameObject lineObj;
+    
     private RoleInfo nowRoleInfo;
     
     [Header("射线检测相关")]
     public Transform firePoint;
-    
-    [Header("范围检测相关")] 
-    public Vector3 detectionDistance;// 检测距离
-    public float radius;
     
     private void Awake()
     {
@@ -56,16 +53,12 @@ public class PlayerObj : MonoBehaviour
         _animator.SetLayerWeight(1,currentWeight);
 
         nowRoleInfo = GameDataManager.Instance.nowSelectCharacterInfo;
-
-        if (nowRoleInfo.type == 2)
-        {
-            //射线可视化相关
-            lineObj = new GameObject();
-            line = lineObj.AddComponent<LineRenderer>();
-            line.startWidth = 0.01f;
-            line.material = new Material(Shader.Find("Unlit/Color")) { color = Color.red }; 
-        }
         
+        //射线可视化相关
+        lineObj = new GameObject();
+        line = lineObj.AddComponent<LineRenderer>();
+        line.startWidth = 0.01f;
+        line.material = new Material(Shader.Find("Unlit/Color")) { color = Color.red }; 
     }
     
     private void OnEnable()
@@ -83,13 +76,12 @@ public class PlayerObj : MonoBehaviour
     {
         this.atk = atk;
         this.money = money;
- 
         UpdateMoney();
     }
     
     void Update()
     {
-        if(GameLevelManager.Instance.CheckGameOver() || SafetyAreaObj.Instance.isDead)
+        if(LevelManager.Instance.CheckGameOver() || SafetyAreaObj.Instance.isDead)
             return;
         
         hSpeed =Mathf.Lerp(hSpeed,_playerInputController.Player.Move.ReadValue<Vector2>().x,smoothSpeed*Time.deltaTime) ;
@@ -102,14 +94,10 @@ public class PlayerObj : MonoBehaviour
         _animator.SetLayerWeight(1,currentWeight);
         
         SetAnimation();
-
-        if (nowRoleInfo.type == 2)
-        {
-            //射线设置位置
-            line.SetPosition(0, firePoint.position);
-            line.SetPosition(1, firePoint.position + firePoint.forward * 20);
-        }
-
+        
+        //射线设置位置
+        line.SetPosition(0, firePoint.position);
+        line.SetPosition(1, firePoint.position + firePoint.forward * 20);
     }
 
     private void SetAnimation()
@@ -137,37 +125,44 @@ public class PlayerObj : MonoBehaviour
     public void ShootEvent()
     {
         RaycastHit[] hits = Physics.RaycastAll(new Ray(firePoint.position,this.transform.forward),1000);
-        MusicPoolManager.Instance.PlaySound("Music/Gun");
         for (int i = 0; i < hits.Length; i++)
         {
-            ZombieObj zombie = hits[i].collider.gameObject.GetComponent<ZombieObj>();
-            GameObject eff = Instantiate(Resources.Load<GameObject>("effect/attack"),hits[i].point,hits[i].transform.rotation);
-            Destroy(eff,0.3f);
-            if (zombie != null)
+            if (hits[i].collider.gameObject.layer == LayerMask.NameToLayer("Zombie"))
             {
-                zombie.TakeDamage(atk);
-                break;
-            }   
+                ZombieObj zombie = hits[i].collider.gameObject.GetComponent<ZombieObj>();
+                if (zombie != null)
+                {
+                    zombie.TakeDamage(atk);
+                    break;
+                }
+            }
+            GameObject eff = Instantiate(ResourceManager.Instance.Load<GameObject>("effect/attack"),hits[i].point,hits[i].transform.rotation);
+            Destroy(eff,0.3f);  
         }
-    }
-
-    public void KnifeEvent()
-    {
-        Collider[] colliders= Physics.OverlapSphere(this.transform.position + this.transform.forward * detectionDistance.z+this.transform.up*detectionDistance.y, radius,
-            1 << LayerMask.NameToLayer("Zombie"));
-        MusicPoolManager.Instance.PlaySound("Music/Knife");
-        for (int i = 0; i < colliders.Length; i++)
+        //音效
+        if (nowRoleInfo.id == 1)
         {
-            ZombieObj zombie = colliders[i].gameObject.GetComponent<ZombieObj>();
-            if (zombie != null)
-            {
-                zombie.TakeDamage(atk);
-                break;
-            }   
+            MusicPoolManager.Instance.PlaySound("Music/HandGun");
+        }else if (nowRoleInfo.id == 5)
+        {
+            MusicPoolManager.Instance.PlaySound("Music/Rocket");
         }
-        
+        else
+        {
+            MusicPoolManager.Instance.PlaySound("Music/Gun");
+        }
     }
-
+    
+    // 禁用玩家输入
+    public void DisablePlayerInput() 
+    {
+        _playerInputController.Disable();
+        isFire = false;
+        hSpeed = 0;
+        vSpeed = 0;
+        SetAnimation();
+    }
+    
     public void UpdateMoney()
     {
         if(gameUI ==null)
@@ -180,23 +175,5 @@ public class PlayerObj : MonoBehaviour
         this.money += money;
         UpdateMoney();
     }
-    
-    // 禁用玩家输入
-    public void DisablePlayerInput()
-    {
-        _playerInputController.Disable();
-        isFire = false;
-        hSpeed = 0;
-        vSpeed = 0;
-        SetAnimation();
-    }
-    
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector3 detectionCenter = transform.position + transform.forward * detectionDistance.z+this.transform.up*detectionDistance.y;
-        Gizmos.DrawWireSphere(detectionCenter, radius);
-    }
-    
     
 }

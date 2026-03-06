@@ -18,34 +18,23 @@ MonoBehaviour:
     atk: 3
     roleName: Gunner
     unlockAmount: 0
-    type: 2
   - id: 2
-    resourcePath: Character/Soldier2
-    atk: 2
-    roleName: Knife Holder
-    unlockAmount: 0
-    type: 1
-  - id: 3
     resourcePath: Character/Soldier3
     atk: 5
     roleName: Machine Gunner
-    unlockAmount: 5000
-    type: 2
-  - id: 4
+    unlockAmount: 1000
+  - id: 3
     resourcePath: Character/Soldier4
     atk: 5
     roleName: Machine Gunner
-    unlockAmount: 5000
-    type: 2
-  - id: 5
+    unlockAmount: 2000
+  - id: 4
     resourcePath: Character/Soldier5
     atk: 4
     roleName: Rifleman
-    unlockAmount: 2000
-    type: 2
-  - id: 6
+    unlockAmount: 3000
+  - id: 5
     resourcePath: Character/Soldier6
-    atk: 10
+    atk: 20
     roleName: Rocket Gunner
     unlockAmount: 10000
-    type: 2

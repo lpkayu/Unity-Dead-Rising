@@ -56,6 +56,8 @@ public class SettingPanel : BasePanel
         applyBtn.onClick.AddListener(() =>
         {
             GameDataManager.Instance.SaveMusicData();
+            UIManager.Instance.HidePanel("SettingPanel");
+            UIManager.Instance.ShowPanel("BeginPanel");
         });
         
     }

@@ -2083,7 +2083,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 314.8, y: 32.7, z: 218.47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5307082803476717690}
@@ -2148,13 +2148,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 10
   crouchSmoothSpeed: 10
-  roteSpeed: 2
+  roteSpeed: 3
   isFire: 0
   atk: 0
   money: 0
   firePoint: {fileID: 5997717540079743079}
-  detectionDistance: {x: 0, y: 0, z: 0}
-  radius: 0
 --- !u!114 &1281228530951924715
 MonoBehaviour:
   m_ObjectHideFlags: 0

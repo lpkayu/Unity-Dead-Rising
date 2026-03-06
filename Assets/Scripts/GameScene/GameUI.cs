@@ -13,6 +13,7 @@ public class GameUI : BasePanel
     public Text waveNumberText;
     public Text amountNumberText;
     public Text hpText;
+    public Button taskBtn;
     
     public Transform towerBtn;
     public List<TowerBtn> towerBtnObj;
@@ -39,8 +40,9 @@ public class GameUI : BasePanel
          base.Start();
          _playerInputController.UI.CreateTower.performed+=CreateTower;
      }
+
      
-    private void OnEnable()
+     private void OnEnable()
     {
         _playerInputController.Enable();
     }
@@ -50,13 +52,19 @@ public class GameUI : BasePanel
         _playerInputController.UI.CreateTower.performed -= CreateTower;
         _playerInputController.Disable();
     }
-
+    
     protected override void Init()
-    { returnBtn.onClick.AddListener(() =>
+    { 
+        returnBtn.onClick.AddListener(() =>
         {
             UIManager.Instance.HidePanel("GameUI");
             SceneManager.LoadScene("Scenes/BeginScene");
+            ResourceManager.Instance.ClearDic(null);
         });
+        taskBtn.onClick.AddListener((() =>
+        {
+            UIManager.Instance.ShowPanel("TaskPanel");
+        }));
         
         towerBtn.gameObject.SetActive(false);
     }
@@ -67,8 +75,6 @@ public class GameUI : BasePanel
     {
         if(!createInput)
             return;
-        
-        
         if (nowSelectTowerPoint.nowTowerInfo == null)
         {
             

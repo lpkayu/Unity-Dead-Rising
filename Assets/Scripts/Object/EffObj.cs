@@ -18,7 +18,6 @@ public class EffObject : MonoBehaviour
       int zombieLayer = LayerMask.NameToLayer("Zombie");
       if (other.gameObject.layer == zombieLayer)
       {
-         Debug.Log("检测到僵尸");
          Destroy(this.gameObject);
       }
    }
